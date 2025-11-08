@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView text_display;
 
     // This is to evaluate the math expression
-    ScriptEngine engine;
+    //ScriptEngine engine;
+
+    Evaluate e = new Evaluate();
 
     /**
      * Method name: onCreate
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         //Used to retrieve JavaScript code to be used by the program
-        engine = new ScriptEngineManager().getEngineByName("rhino");
+        //engine = new ScriptEngineManager().getEngineByName("rhino");
 
         //Initializing all the buttons that will be used by the program
         btn1 = (Button) findViewById(R.id.btn1);
@@ -210,9 +212,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private String evaluate(String expression) throws ScriptException {
         //Evaluate the string expression entered in by the user
-        String result = engine.eval(expression).toString();
+        //String result = engine.eval(expression).toString();
         //Store the result of the operation into an object of type BigDecimal
-        BigDecimal decimal = new BigDecimal(result);
+        //BigDecimal decimal = new BigDecimal(result);
+
+        BigDecimal decimal = e.evaluate(expression);
+
         //Return a rounded version (to 2 decimal places) of the value calculated from the
         //specified operation performed.
         return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
