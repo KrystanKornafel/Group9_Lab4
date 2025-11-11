@@ -28,5 +28,26 @@ public class EvaluateTest {
         assertEquals("Values match", expected, actual, 0.001);
     }
 
+    //Test method -> Tests for subtraction
+    //Bad test for subtraction
+    @Test
+    public void evaluate_subtract_bad() throws Exception {
+        Evaluate e = new Evaluate();
+        double actual = e.evaluate("5-3").doubleValue();
+        double expected = 1.0;
+        //fail test
+        assertEquals("We have an error. Values don't match", expected, actual, 0.001);
+    }
+
+    //Good test for subtraction
+    @Test
+    public void evaluate_subtract_good() throws Exception {
+        Evaluate e = new Evaluate();
+        double actual = e.evaluate("10-4").doubleValue();
+        double expected = 6.0;
+        //pass test
+        assertEquals("Values match", expected, actual, 0.001);
+    }
+
 
 }
